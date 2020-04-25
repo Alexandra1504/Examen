@@ -50,7 +50,7 @@ namespace Examen
         }
         static public void Sort()
         {
-            Town.OrderBy(r => r.Count).ThenBy(r => r.Data).ToArray();
+            Town.OrderBy(r => r.Count).ThenByDescending(r => r.Data).ToArray();
         }
         static public void SaveInFile()
         {
