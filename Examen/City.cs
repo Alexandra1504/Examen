@@ -48,5 +48,17 @@ namespace Examen
                 Town.Add(city);
             }
         }
+        static public void Sort()
+        {
+            Town.OrderBy(r => r.Count).ThenBy(r => r.Data).ToArray();
+        }
+        static public void SaveInFile()
+        {
+            using (StreamWriter sw = new StreamWriter("Towns.txt"))
+            {
+                foreach (City C in Town)
+                    sw.WriteLine(C.Name + ", " + C.Data + ", " + C.Count.ToString());
+            }
+        }
     }
 }
