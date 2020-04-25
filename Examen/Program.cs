@@ -9,7 +9,12 @@ namespace Examen
     class Program
     {
         static void Main(string[] args)
-        { }
-        
+        {
+            Cities.Cityes();
+            Cities.Sort();
+            Cities.SaveInFile();
+
+        }
+
     }
 }
