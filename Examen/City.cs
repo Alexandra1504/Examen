@@ -3,31 +3,50 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Examen
 {
     class City
     {
-        string name;
-        DateTime data;
-        int count;
+        public string Name = "";
+        public DateTime Data;
+        public int Count = 0;
+    }
 
-        public string Name
-        {
-            get { return this.name; }
-            set { this.name = value; }
-        }
+    static class Cities
+    {
 
-        public DateTime Date
-        {
-            get { return this.data; }
-            set { this.data = value; }
-        }
+        static public int Size;
+        static public List<City> Town = new List<City>();
+        private static bool hasLetters;
 
-        public int Count
+        static public void Cityes()
         {
-            get { return this.count; }
-            set { this.count = value; }
+            Console.Write("Размер массива = ");
+            Size = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < Size; i++)
+            {
+                City city = new City();
+                Console.Write("Название города №" + i + " = ");
+                city.Name = Console.ReadLine();
+                Console.Write("Дата создания №" + i + " = ");
+                city.Data = Convert.ToDateTime(Console.ReadLine());
+                do
+                {
+                    Console.Write("Количество жителей №" + i + " = ");
+                    string c = Console.ReadLine();
+                    hasLetters = c.AsEnumerable().Any(ch => char.IsLetter(ch));
+                    if (!hasLetters)
+                        city.Count = Convert.ToInt32(c);
+                    else
+                    {
+                        Console.Write("Количество жителей не должно содержать буквы. Только цифры. Повторите ввод количества жителей №" + i + " = ");
+                    }
+                }
+                while (hasLetters);
+                Town.Add(city);
+            }
         }
     }
 }
